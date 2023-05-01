@@ -13,7 +13,11 @@ export const Button = styled.button`
   margin-bottom: 5px;
   padding: 2px 15px;
   border: 1px solid grey;
-  border-radius:2px;
+  border-radius: 2px;
   font-size: 11px;
   background-color: #fff;
+  &:active {
+    background-color: #2f6fed;
+    color: white;
+  }
 `;

@@ -13,6 +13,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   width: 140px;
+  outline: none;
   margin-bottom: 10px;
   &:focus {
     border: 3px solid skyblue;
