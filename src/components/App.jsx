@@ -11,11 +11,9 @@ class App extends Component {
     filter: '',
   };
 
-  nameInputId = nanoid();
-
   formSubmitHandler = data => {
     const contact = {
-      id: (this.nameInputId = nanoid()),
+      id: nanoid(),
       name: data.name,
       number: data.number,
     };
@@ -48,7 +46,7 @@ class App extends Component {
   };
 
   render() {
-    const { name, number, filter } = this.state;
+    const { filter } = this.state;
     const filterContacts = this.getFilterContacts();
 
     return (
@@ -58,11 +56,7 @@ class App extends Component {
         }}
       >
         <h1>Phonebook</h1>
-        <ContactForm
-          onSubmit={this.formSubmitHandler}
-          name={name}
-          number={number}
-        />
+        <ContactForm onSubmit={this.formSubmitHandler} />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />

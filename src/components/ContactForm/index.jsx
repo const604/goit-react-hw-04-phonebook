@@ -7,7 +7,6 @@ class ContactForm extends Component {
   state = {
     name: '',
     number: '',
-    id: '',
   };
 
   nameInputId = nanoid();
@@ -42,11 +41,12 @@ class ContactForm extends Component {
           required
           onChange={this.handleChange}
         />
-        <label>Number</label>
+        <label htmlFor={this.nameInputId}>Number</label>
         <Input
           type="tel"
           name="number"
           value={number}
+          id={this.nameInputId}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
@@ -59,9 +59,7 @@ class ContactForm extends Component {
 }
 
 ContactForm.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-  id: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
