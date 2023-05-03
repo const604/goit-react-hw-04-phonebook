@@ -45,6 +45,11 @@ class App extends Component {
     }));
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    this.state.contacts !== prevState.contacts &&
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+
   render() {
     const { filter } = this.state;
     const filterContacts = this.getFilterContacts();
