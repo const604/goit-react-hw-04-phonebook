@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Item, Button } from './ContactItem.styled';
 
-const ContactItem = ({ contacts, onDeleteContact }) => {
-  return contacts.map(({ name, number, id }) => (
-    <Item key={id}>
+const ContactItem = ({ name, number, id, onDeleteContact }) => {
+  return (
+    <Item>
       {name}: {number}
       <Button type="submit" onClick={() => onDeleteContact(id)}>
         Delete
       </Button>
     </Item>
-  ));
+  );
 };
 
 ContactItem.propTypes = {
