@@ -15,8 +15,11 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onFormSubmit(this.state);
-    this.reset();
+    this.props.contacts.some(
+      contact => contact.name.toLowerCase() === this.state.name.toLowerCase()
+    )
+      ? alert(`${this.state.name} is already in contacts`)
+      : this.props.onFormSubmit(this.state) || this.reset();
   };
 
   reset = () => {

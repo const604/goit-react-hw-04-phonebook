@@ -17,13 +17,10 @@ class App extends Component {
       name: data.name,
       number: data.number,
     };
-    this.state.contacts.some(
-      contact => contact.name.toLowerCase() === data.name.toLowerCase()
-    )
-      ? alert(`${data.name} is already in contacts`)
-      : this.setState(({ contacts }) => ({
-          contacts: [contact, ...contacts],
-        }));
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
   changeFilter = e => {
@@ -57,7 +54,7 @@ class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filterContacts = this.getFilterContacts();
 
     return (
@@ -67,7 +64,10 @@ class App extends Component {
         }}
       >
         <h1>Phonebook</h1>
-        <ContactForm onFormSubmit={this.formSubmitHandler} />
+        <ContactForm
+          contacts={contacts}
+          onFormSubmit={this.formSubmitHandler}
+        />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
