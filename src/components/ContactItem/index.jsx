@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Item, Button } from './ContactItem.styled';
 
-const ContactItem = ({ name, number, onDeleteContact }) => {
+const ContactItem = ({ name, number, id, onDeleteContact }) => {
   return (
     <Item>
       {name}: {number}
-      <Button type="submit" onClick={onDeleteContact}>
+      <Button type="button" onClick={() => onDeleteContact(id)}>
         Delete
       </Button>
     </Item>
