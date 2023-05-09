@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.state.contacts.length !== prevState.contacts.length &&
+    this.state.contacts !== prevState.contacts &&
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 
