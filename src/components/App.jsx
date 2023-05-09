@@ -47,14 +47,14 @@ class App extends Component {
     if (contacts !== null) {
       const parsedContacts = JSON.parse(contacts);
       parsedContacts && this.setState({ contacts: parsedContacts });
+      return;
     }
+    this.setState({ contacts: initialContacts });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      this.state.contacts !== prevState.contacts &&
-        localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
+    this.state.contacts !== prevState.contacts &&
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 
   render() {
